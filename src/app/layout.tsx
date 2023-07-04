@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Maydit",
-  description: "A Maydit clone built with Next.js and TypeScript.",
+  description: "Komunitas Tanpa Batas !",
 };
 
 export default function RootLayout({
