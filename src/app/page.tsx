@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import SheetPost from "@/components/SheetPost";
 import CustomFeed from "@/components/homepage/CustomFeed";
 import GeneralFeed from "@/components/homepage/GeneralFeed";
 import { buttonVariants } from "@/components/ui/Button";
@@ -38,14 +39,16 @@ export default async function Home() {
               </p>
             </div>
 
-            <Link
+            {/* <Link
               className={buttonVariants({
                 className: "w-full mt-4 mb-6",
               })}
               href={`/r/create`}
             >
               Create Community
-            </Link>
+            </Link> */}
+
+            <SheetPost />
           </dl>
         </div>
       </div>
