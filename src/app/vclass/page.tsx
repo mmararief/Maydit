@@ -1,36 +1,33 @@
-"use client";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import {
+  Table,
+  TableCaption,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from "@/components/ui/Table";
 
-interface Task {
-  name: string;
-  date: string;
-  description: string;
-  link: string;
+async function getSchedule() {
+  const res = await fetch("https://1ka28.000webhostapp.com/jadwalmatkul.php");
+  return res.json();
 }
 
-const UpcomingTasks = () => {
-  const [tasks, setTasks] = useState<Task[]>([]); // Add type annotation for tasks
+async function getTask() {
+  const res = await fetch("https://apivclass.herokuapp.com/upcoming", {
+    next: { revalidate: 10000 },
+  });
+  return res.json();
+}
 
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await axios.get("/api/vclass/upcoming");
-        setTasks(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error("Failed to fetch tasks:", error);
-      }
-    };
-
-    fetchTasks();
-  }, []);
-
+const UpcomingTasks = async () => {
+  const tasks = await getTask();
+  const schedule = await getSchedule();
   return (
     <div className="container mx-auto px-4 py-6">
       <h1 className="text-2xl font-bold mb-4">Upcoming Tasks</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tasks.map((task, index) => (
+        {tasks.map((task: any, index: any) => (
           <div
             key={index}
             className="bg-white shadow-md rounded-md p-4 flex flex-col hover:shadow-lg transition duration-300"
@@ -53,6 +50,35 @@ const UpcomingTasks = () => {
           </div>
         ))}
       </div>
+      <h1 className="text-2xl font-bold mb-4 py-6">Schedule</h1>
+      <Table>
+        <TableCaption></TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Class Code</TableHead>
+            <TableHead>Day</TableHead>
+            <TableHead>Course</TableHead>
+            <TableHead>Time</TableHead>
+            <TableHead>Location</TableHead>
+            <TableHead>Instructor</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {schedule.map((item: any, index: any) => (
+            <TableRow
+              key={index}
+              className={index % 2 === 0 ? "bg-gray-100" : ""}
+            >
+              <TableCell>{item[0]}</TableCell>
+              <TableCell>{item[1]}</TableCell>
+              <TableCell>{item[2]}</TableCell>
+              <TableCell>{item[3]}</TableCell>
+              <TableCell>{item[4]}</TableCell>
+              <TableCell>{item[5]}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };
