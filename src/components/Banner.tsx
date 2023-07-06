@@ -18,7 +18,7 @@ const Banner = () => {
         <p className="text-lg sm:text-xl text-white">
           Temukan komunitas berkualitas untuk pengembangan diri Anda
         </p>
-        <Link
+        {/* <Link
           className={buttonVariants({
             className:
               "mt-6 px-6 py-3 rounded-md hover:bg-blue-600 transition-colors duration-300 ease-in-out",
@@ -26,7 +26,7 @@ const Banner = () => {
           href={`/r/create`}
         >
           Create Community
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

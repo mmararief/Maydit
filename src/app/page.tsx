@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <Banner />
-      <h2 className="font-bold text-3xl md:text-4xl py-6">Upcoming Task</h2>
+      <h2 className="font-bold text-3xl md:text-4xl py-6">Upcoming task</h2>
       <Vclass />
       <br></br>
       <h1 className="font-bold text-3xl md:text-4xl">Your feed</h1>
