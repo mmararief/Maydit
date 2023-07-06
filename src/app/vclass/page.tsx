@@ -1,10 +1,16 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+interface Task {
+  name: string;
+  date: string;
+  description: string;
+  link: string;
+}
+
 const UpcomingTasks = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]); // Add type annotation for tasks
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -27,19 +33,23 @@ const UpcomingTasks = () => {
         {tasks.map((task, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-md p-4 flex flex-col"
+            className="bg-white shadow-md rounded-md p-4 flex flex-col hover:shadow-lg transition duration-300"
           >
             <h2 className="text-lg font-semibold mb-2">{task.name}</h2>
             <p className="text-gray-500 mb-2">{task.date}</p>
             <p className="text-gray-500 mb-4">{task.description}</p>
-            <a
-              href={task.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              Go to Quiz
-            </a>
+            <div className="mt-auto">
+              <a
+                href={task.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-500 hover:underline"
+              >
+                <button className="w-full py-2 bg-zinc-700 text-white rounded-md hover:bg-green-600 transition duration-300">
+                  Go to Quiz
+                </button>
+              </a>
+            </div>
           </div>
         ))}
       </div>

@@ -1,10 +1,16 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+interface Task {
+  name: string;
+  date: string;
+  description: string;
+  link: string;
+}
+
 const UpcomingTasks = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]); // Add type annotation for tasks
 
   useEffect(() => {
     const fetchTasks = async () => {
