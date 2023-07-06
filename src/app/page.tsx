@@ -1,5 +1,6 @@
 import Banner from "@/components/Banner";
 import SheetPost from "@/components/SheetPost";
+import Vclass from "@/components/Vclass";
 import CustomFeed from "@/components/homepage/CustomFeed";
 import GeneralFeed from "@/components/homepage/GeneralFeed";
 import { buttonVariants } from "@/components/ui/Button";
@@ -16,8 +17,10 @@ export default async function Home() {
   return (
     <>
       <Banner />
+      <h2 className="font-bold text-3xl md:text-4xl py-6">Upcoming Task</h2>
+      <Vclass />
       <br></br>
-      <h1 className="font-bold text-3xl md:text-4xl">Your feeds</h1>
+      <h1 className="font-bold text-3xl md:text-4xl">Your feed</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6">
         {/* @ts-expect-error server component */}
@@ -39,16 +42,15 @@ export default async function Home() {
               </p>
             </div>
 
-            {/* <Link
+            <SheetPost />
+            <Link
               className={buttonVariants({
                 className: "w-full mt-4 mb-6",
               })}
-              href={`/r/create`}
+              href={`/vclass`}
             >
-              Create Community
-            </Link> */}
-
-            <SheetPost />
+              Tugas Kuliah
+            </Link>
           </dl>
         </div>
       </div>
