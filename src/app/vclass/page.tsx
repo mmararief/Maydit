@@ -1,3 +1,4 @@
+import Banner from "@/components/Banner";
 import { buttonVariants } from "@/components/ui/Button";
 import {
   Table,
@@ -19,7 +20,7 @@ async function getSchedule() {
 
 async function getTask() {
   const res = await fetch("https://apivclass.herokuapp.com/upcoming", {
-    next: { revalidate: 10000 },
+    next: { revalidate: 60 },
   });
   return res.json();
 }
@@ -65,6 +66,7 @@ const UpcomingTasks = async () => {
             </div>
           ))}
         </div>
+
         <h1 className="text-2xl font-bold mb-4 py-6">Schedule</h1>
         <Table>
           <TableCaption></TableCaption>
