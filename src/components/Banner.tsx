@@ -1,6 +1,4 @@
-import Link from "next/link";
 import React from "react";
-import { buttonVariants } from "./ui/Button";
 
 const Banner = () => {
   const backgroundImage = {

@@ -1,4 +1,3 @@
-import Banner from "@/components/Banner";
 import { buttonVariants } from "@/components/ui/Button";
 import {
   Table,
@@ -12,6 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import balancer, { Balancer } from "react-wrap-balancer";
 
 async function getSchedule() {
   const res = await fetch("https://1ka28.000webhostapp.com/jadwalmatkul.php");
@@ -48,21 +48,18 @@ const UpcomingTasks = async () => {
               key={index}
               className="bg-white shadow-md rounded-md p-4 flex flex-col hover:shadow-lg transition duration-300"
             >
-              <h2 className="text-lg font-semibold mb-2">{task.name}</h2>
-              <p className="text-gray-500 mb-2">{task.date}</p>
-              <p className="text-gray-500 mb-4">{task.description}</p>
-              <div className="mt-auto">
-                <a
-                  href={task.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-500 hover:underline"
-                >
-                  <button className="w-full py-2 bg-zinc-700 text-white rounded-md hover:bg-green-600 transition duration-300">
-                    Go to Quiz
-                  </button>
-                </a>
-              </div>
+              <Link
+                href={task.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className=" hover:underline"
+              >
+                <h2 className="text-lg font-semibold mb-2">{task.name}</h2>
+                <p className="text-gray-500 mb-2">{task.eventType}</p>
+                <p className="text-gray-500 mb-4">
+                  <Balancer>{task.description}</Balancer>
+                </p>
+              </Link>
             </div>
           ))}
         </div>

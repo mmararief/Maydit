@@ -12,6 +12,7 @@ async function getSchedule() {
   const res = await fetch("https://1ka28.000webhostapp.com/jadwalmatkul.php");
   return res.json();
 }
+
 const SchedulePage = async () => {
   const schedule = await getSchedule();
 

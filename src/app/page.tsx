@@ -1,6 +1,5 @@
 import Banner from "@/components/Banner";
 import SheetPost from "@/components/SheetPost";
-import Vclass from "@/components/Vclass";
 import CustomFeed from "@/components/homepage/CustomFeed";
 import GeneralFeed from "@/components/homepage/GeneralFeed";
 import { buttonVariants } from "@/components/ui/Button";
